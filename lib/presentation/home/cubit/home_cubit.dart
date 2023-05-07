@@ -13,7 +13,7 @@ class HomeCubit extends BuildableCubit<HomeState, HomeBuildable> {
     build((buildable) => buildable.copyWith(failed: false));
     try {
       await _authRepository.login();
-      build((buildable) => buildable.copyWith(success: true, failed: false));
+     emit(SuccessfullRegisteredState());
     } catch (e) {
       build(
         (buildable) => buildable.copyWith(failed: true, error: e.toString()),

@@ -5,7 +5,6 @@ import 'package:new_architecture/data/preferences/token_preferences.dart';
 
 @Injectable()
 class AuthRepository {
-  
   AuthRepository(this._token);
   final TokenPreference _token;
   final FlutterAppAuth _appAuth = const FlutterAppAuth();
@@ -29,5 +28,10 @@ class AuthRepository {
     } else {
       await _token.set(response.authorizationCode!);
     }
+  }
+
+  getToken() async {
+    var token = _token.get();
+    return token;
   }
 }
