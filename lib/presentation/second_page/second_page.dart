@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:new_architecture/data/api/graphql_api.dart';
+import 'package:new_architecture/presentation/widgets/error_page.dart';
+import 'package:new_architecture/presentation/widgets/progress_indicator.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});
@@ -8,6 +10,8 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text("Fetch graphql screen"),elevation: 0,
+      automaticallyImplyLeading: true,),
       body: Query(
         options: QueryOptions(
           document: gql(GraphqlService.readRepositories),
@@ -18,49 +22,22 @@ class SecondPage extends StatelessWidget {
           FetchMore? fetchMore,
         }) {
           if (result.hasException) {
-            return Center(
-              child: Text(result.exception.toString()),
+            return ShowError(
+              error: result.exception.toString(),
             );
           } else if (result.isLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const LoaderWidget();
           } else {
             var data = result.data;
-            print(result.data);
+          
             return Column(
               children: const [
                 Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Text(
-                    "Products",
-                    
+                    "SuccessFully fetch data",
                   ),
                 ),
-                // Expanded(
-                //   child: GridView.builder(
-                //     gridDelegate:
-                //         const SliverGridDelegateWithFixedCrossAxisCount(
-                //             crossAxisCount: 2),
-                //     itemCount: data.length,
-                //     itemBuilder: (context, index) {
-                //       var product = data[index]["node"];
-                //       return Column(
-                //         children: [
-                //           SizedBox(
-                //             height: 160,
-                //             width: 180,
-                //             child: Image.network(product["thumbnail"]["url"]),
-                //           ),
-                //           Padding(
-                //             padding: const EdgeInsets.symmetric(vertical: 8),
-                //             child: Text(product["name"].toString()),
-                //           )
-                //         ],
-                //       );
-                //     },
-                //   ),
-                // )
               ],
             );
           }

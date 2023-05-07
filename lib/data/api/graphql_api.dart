@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:injectable/injectable.dart';
+import 'package:new_architecture/core/constants/api/api_consts.dart';
 import 'package:new_architecture/data/preferences/token_preferences.dart';
 import 'package:new_architecture/domain/repository/auth/auth_repository.dart';
 
-
 class GraphqlService {
- 
-
-static  String readRepositories = """
+  static String readRepositories = """
   query MyProfile{
   get_user_profile{
     user_id
@@ -37,15 +35,14 @@ static  String readRepositories = """
             }
         }
     }
- 
   }
 }
 """;
 
   static final HttpLink httpLink = HttpLink(
-    'https://dev-graph.telecom-car.uz/v1/graphql',
+    ApiConstants.graphqlLink,
   );
- static ValueNotifier<GraphQLClient> client = ValueNotifier(
+  static ValueNotifier<GraphQLClient> client = ValueNotifier(
     GraphQLClient(
       link: httpLink,
       cache: GraphQLCache(
@@ -59,6 +56,4 @@ static  String readRepositories = """
   //   // OR
   //   // getToken: () => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
   // );
-
-
 }
