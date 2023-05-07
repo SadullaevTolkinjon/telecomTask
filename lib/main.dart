@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:new_architecture/di/injection.config.dart';
+import 'package:new_architecture/core/constants/route_name/navigator_const.dart';
+import 'package:new_architecture/core/utils/routers/routers.dart';
 import 'package:new_architecture/di/injection.dart';
-import 'package:new_architecture/utils/routers/routers.gr.dart';
 
 void main() {
-  initLocator();
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-  final _appRouter = AppRouter();
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: OngenerateRoutes.instance.routeGenerator,
+      initialRoute: NavigatorConst.home,
     );
   }
 }
