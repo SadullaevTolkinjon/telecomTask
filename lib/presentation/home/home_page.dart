@@ -25,7 +25,8 @@ class HomePage extends StatelessWidget {
                   ],
               builder: (context, state) {
                 if (state.failed) {
-                  SnackbarWidgets.showError(context, state.error);
+                  
+                 // SnackbarWidgets.showError(context, state.error);
                 }
                 return const HomeView();
               });
