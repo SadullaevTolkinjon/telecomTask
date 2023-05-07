@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_architecture/core/constants/route_name/navigator_const.dart';
 import 'package:new_architecture/presentation/home/home_page.dart';
+import 'package:new_architecture/presentation/second_page/second_page.dart';
 
 class OngenerateRoutes {
   static final OngenerateRoutes _instance = OngenerateRoutes._init();
@@ -14,9 +15,12 @@ class OngenerateRoutes {
     switch (settings.name) {
       case NavigatorConst.home:
         return sampleRoute(
-            HomePage(),
+          const HomePage(),
         );
-    
+      case NavigatorConst.secondPage:
+        return sampleRoute(
+          const SecondPage(),
+        );
     }
     return null;
   }

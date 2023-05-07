@@ -16,37 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeBuildable {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  bool get loading => throw _privateConstructorUsedError;
+  bool get success => throw _privateConstructorUsedError;
+  bool get failed => throw _privateConstructorUsedError;
+  dynamic get error => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HomeBuildableCopyWith<HomeBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -55,6 +31,8 @@ abstract class $HomeBuildableCopyWith<$Res> {
   factory $HomeBuildableCopyWith(
           HomeBuildable value, $Res Function(HomeBuildable) then) =
       _$HomeBuildableCopyWithImpl<$Res, HomeBuildable>;
+  @useResult
+  $Res call({bool loading, bool success, bool failed, dynamic error});
 }
 
 /// @nodoc
@@ -66,99 +44,149 @@ class _$HomeBuildableCopyWithImpl<$Res, $Val extends HomeBuildable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loading = null,
+    Object? success = null,
+    Object? failed = null,
+    Object? error = freezed,
+  }) {
+    return _then(_value.copyWith(
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool,
+      failed: null == failed
+          ? _value.failed
+          : failed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$_HomeBuildableCopyWith<$Res>
+    implements $HomeBuildableCopyWith<$Res> {
+  factory _$$_HomeBuildableCopyWith(
+          _$_HomeBuildable value, $Res Function(_$_HomeBuildable) then) =
+      __$$_HomeBuildableCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool loading, bool success, bool failed, dynamic error});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$HomeBuildableCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$_HomeBuildableCopyWithImpl<$Res>
+    extends _$HomeBuildableCopyWithImpl<$Res, _$_HomeBuildable>
+    implements _$$_HomeBuildableCopyWith<$Res> {
+  __$$_HomeBuildableCopyWithImpl(
+      _$_HomeBuildable _value, $Res Function(_$_HomeBuildable) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loading = null,
+    Object? success = null,
+    Object? failed = null,
+    Object? error = freezed,
+  }) {
+    return _then(_$_HomeBuildable(
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool,
+      failed: null == failed
+          ? _value.failed
+          : failed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_HomeBuildable implements _HomeBuildable {
+  const _$_HomeBuildable(
+      {this.loading = false,
+      this.success = false,
+      this.failed = false,
+      this.error});
+
+  @override
+  @JsonKey()
+  final bool loading;
+  @override
+  @JsonKey()
+  final bool success;
+  @override
+  @JsonKey()
+  final bool failed;
+  @override
+  final dynamic error;
 
   @override
   String toString() {
-    return 'HomeBuildable.initial()';
+    return 'HomeBuildable(loading: $loading, success: $success, failed: $failed, error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_HomeBuildable &&
+            (identical(other.loading, loading) || other.loading == loading) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.failed, failed) || other.failed == failed) &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, loading, success, failed,
+      const DeepCollectionEquality().hash(error));
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$_HomeBuildableCopyWith<_$_HomeBuildable> get copyWith =>
+      __$$_HomeBuildableCopyWithImpl<_$_HomeBuildable>(this, _$identity);
 }
 
-abstract class _Initial implements HomeBuildable {
-  const factory _Initial() = _$_Initial;
+abstract class _HomeBuildable implements HomeBuildable {
+  const factory _HomeBuildable(
+      {final bool loading,
+      final bool success,
+      final bool failed,
+      final dynamic error}) = _$_HomeBuildable;
+
+  @override
+  bool get loading;
+  @override
+  bool get success;
+  @override
+  bool get failed;
+  @override
+  dynamic get error;
+  @override
+  @JsonKey(ignore: true)
+  _$$_HomeBuildableCopyWith<_$_HomeBuildable> get copyWith =>
+      throw _privateConstructorUsedError;
 }

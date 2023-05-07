@@ -11,4 +11,5 @@ class AuthApi {
     final body = {"email": email, "password": password};
     return _api.post(path: "/users/login",body: body);
   }
+  
 }

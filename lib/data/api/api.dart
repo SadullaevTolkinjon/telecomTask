@@ -11,7 +11,7 @@ class Api {
 
   // Api(this._token);
 
-  final _host = "api.takhfid.uz";
+  final _host = "";
   final _root = "";
 
   final _timeout = const Duration(seconds: 15);
@@ -76,7 +76,6 @@ class Api {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       return response;
     }
-
     switch (response.statusCode) {
       // case 404:
       //   throw UserNotFoundException();

@@ -3,9 +3,9 @@ import 'package:new_architecture/core/constants/route_name/navigator_const.dart'
 import 'package:new_architecture/core/utils/routers/routers.dart';
 import 'package:new_architecture/di/injection.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies();
+ await configureDependencies();
   runApp(const MyApp());
 }
 

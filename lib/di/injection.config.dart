@@ -13,13 +13,11 @@ import 'package:new_architecture/data/preferences/token_preferences.dart'
     as _i6;
 import 'package:new_architecture/domain/repository/auth/auth_repository.dart'
     as _i7;
-import 'package:new_architecture/domain/repository/auth/auth_repository_implementation.dart'
+import 'package:new_architecture/presentation/home/cubit/home_cubit.dart'
     as _i8;
-import 'package:new_architecture/presentation/login/bloc/login_bloc_bloc.dart'
-    as _i9;
 import 'package:shared_preferences/shared_preferences.dart' as _i5;
 
-import 'data_module.dart' as _i10; // ignore_for_file: unnecessary_lambdas
+import 'data_module.dart' as _i9; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 extension GetItInjectableX on _i1.GetIt {
@@ -42,14 +40,11 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.factory<_i6.TokenPreference>(
         () => _i6.TokenPreference(gh<_i5.SharedPreferences>()));
-    gh.factory<_i7.AuthRepository>(() => _i8.AuthRepositoryImpl(
-          gh<_i4.AuthApi>(),
-          gh<_i6.TokenPreference>(),
-        ));
-    gh.factory<_i9.LoginBlocBloc>(
-        () => _i9.LoginBlocBloc(gh<_i7.AuthRepository>()));
+    gh.factory<_i7.AuthRepository>(
+        () => _i7.AuthRepository(gh<_i6.TokenPreference>()));
+    gh.factory<_i8.HomeCubit>(() => _i8.HomeCubit(gh<_i7.AuthRepository>()));
     return this;
   }
 }
 
-class _$DataModule extends _i10.DataModule {}
+class _$DataModule extends _i9.DataModule {}
